@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════
+   PANDAGUIDE — WoW MoP Classic
+   style.css
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --bg:          #ffffff;
+  --bg2:         #f6f4ef;
+  --bg3:         #eeece7;
+  --bg-info:     #e8f2fb;
+  --bg-danger:   #fdf0ee;
+  --bg-success:  #edf7e0;
+  --bg-warning:  #fdf5e3;
+  --bg-hc:       #fef9ec;
+  --txt:         #1c1b18;
+  --txt2:        #4a4540;
+  --txt3:        #8a8680;
+  --txt-info:    #1560a0;
+  --txt-danger:  #a02828;
+  --txt-success: #366210;
+  --txt-warning: #7a4c0a;
+  --txt-hc:      #7a5a0a;
+  --bdr:         rgba(0,0,0,0.08);
+  --bdr2:        rgba(0,0,0,0.15);
+  --bdr-danger:  #d84040;
+  --bdr-hc:      #c8a020;
+  --gold:        #d4940a;
+  --gold-light:  #f0b830;
+  --r:           8px;
+  --r2:          12px;
+  --font:        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg3); color: var(--txt); }
+
+/* ── LAYOUT ── */
+#app { display: grid; grid-template-columns: 240px 1fr; height: 100vh; }
+
+/* ── SIDEBAR ── */
+#sb { background: var(--bg2); border-right: 0.5px solid var(--bdr); overflow-y: auto; display: flex; flex-direction: column; }
+.sb-logo { padding: 16px; border-bottom: 1px solid var(--bdr); flex-shrink: 0; }
+.sb-logo-name { font-size: 16px; font-weight: 600; color: var(--txt); letter-spacing: -.01em; }
+.sb-logo-accent { color: var(--gold); }
+.sb-logo-tag { font-size: 11px; color: var(--txt3); margin-top: 2px; }
+.sb-sec { padding: 12px 16px 5px; font-size: 10px; font-weight: 600; letter-spacing: .09em; color: var(--txt3); text-transform: uppercase; }
+.sb-item { display: flex; align-items: center; gap: 8px; padding: 9px 16px; font-size: 13px; cursor: pointer; color: var(--txt2); border-top: 0.5px solid var(--bdr); position: relative; user-select: none; transition: background .1s, color .1s; }
+.sb-item:hover { background: var(--bg); color: var(--txt); }
+.sb-item.on { color: var(--txt); background: var(--bg); font-weight: 500; }
+.sb-item.on::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+.sb-boss { display: flex; align-items: center; gap: 7px; padding: 7px 16px 7px 28px; font-size: 12px; cursor: pointer; color: var(--txt2); position: relative; user-select: none; transition: background .1s, color .1s; border-top: 0.5px solid var(--bdr); }
+.sb-boss:hover { background: var(--bg); color: var(--txt); }
+.sb-boss.on { color: var(--txt); background: var(--bg); font-weight: 500; }
+.sb-boss.on::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+.sb-num { font-size: 11px; color: var(--txt3); min-width: 18px; text-align: right; flex-shrink: 0; }
+.sb-badge { font-size: 10px; padding: 2px 7px; border-radius: 99px; margin-left: auto; flex-shrink: 0; font-weight: 500; }
+.sb-badge.patch { background: var(--bg3); color: var(--txt3); }
+.sb-badge.hc { background: var(--bg-hc); color: var(--txt-hc); border: 0.5px solid var(--bdr-hc); }
+.sb-badge.soon { background: var(--bg3); color: var(--txt3); font-style: italic; }
+
+/* ── MAIN ── */
+#main { display: flex; flex-direction: column; overflow: hidden; }
+#tabs { display: flex; border-bottom: 1px solid var(--bdr); background: var(--bg2); overflow-x: auto; padding: 0 20px; flex-shrink: 0; scrollbar-width: none; justify-content: center; }
+#tabs::-webkit-scrollbar { display: none; }
+.tab { padding: 11px 14px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--txt3); white-space: nowrap; border-bottom: 2px solid transparent; user-select: none; transition: color .12s, border-color .12s; }
+.tab:hover { color: var(--txt); }
+.tab.on { color: var(--gold); border-bottom-color: var(--gold); }
+.tab[data-t="errores"].on { color: var(--txt-danger); border-bottom-color: var(--bdr-danger); }
+
+/* ── CONTENT ── */
+
+.c-boss-h { font-size: 22px; font-weight: 600; color: var(--txt); margin: 0 0 4px; letter-spacing: -.02em; }
+.c-boss-sub { font-size: 12px; color: var(--txt3); margin: 0 0 24px; }
+.c-intro { font-size: 14px; color: var(--txt2); line-height: 1.8; margin: 0 0 24px; }
+.c-st { font-size: 10px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--txt3); margin: 0 0 12px; padding-bottom: 8px; border-bottom: 0.5px solid var(--bdr); }
+.section-gap { margin-top: 24px; }
+
+/* Mechanic cards */
+.c-mech { background: var(--bg2); border-radius: var(--r); padding: 13px 15px; margin-bottom: 8px; border: 0.5px solid var(--bdr); }
+.c-mech.hc-mech { background: var(--bg-hc); border-color: var(--bdr-hc); }
+.c-mech-n { font-size: 13px; font-weight: 600; color: var(--txt); margin: 0 0 5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.c-mech-d { font-size: 13px; color: var(--txt2); line-height: 1.65; margin: 0; }
+.hc-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 99px; background: var(--bg-hc); color: var(--txt-hc); border: 0.5px solid var(--bdr-hc); letter-spacing: .04em; text-transform: uppercase; flex-shrink: 0; }
+
+/* Tips */
+.c-tip { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-bottom: 0.5px solid var(--bdr); }
+.c-tip:last-child { border-bottom: none; }
+.c-dot { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+.dt { background: var(--bg-info);    color: var(--txt-info); }
+.dd { background: var(--bg-success); color: var(--txt-success); }
+.dh { background: var(--bg2);        color: var(--txt); border: 0.5px solid var(--bdr2); }
+.dw { background: var(--bg-danger);  color: var(--txt-danger); }
+.c-tip-body { display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+.c-tip-txt { font-size: 13px; color: var(--txt2); line-height: 1.65; }
+.c-tip-img { display: inline-block; max-width: 380px; max-height: 260px; width: 100%; height: auto; object-fit: contain; border-radius: var(--r); border: 0.5px solid var(--bdr); }
+
+/* Errors */
+.c-err { border-radius: var(--r); padding: 13px 15px; margin-bottom: 8px; border-left: 3px solid var(--bdr-danger); background: var(--bg-danger); }
+.c-err-t { font-size: 13px; font-weight: 600; color: var(--txt-danger); margin: 0 0 5px; }
+.c-err-d { font-size: 13px; color: var(--txt2); line-height: 1.65; }
+
+/* Positioning box */
+.c-pos-box { background: var(--bg2); border-radius: var(--r); padding: 13px 15px; border: 0.5px solid var(--bdr); }
+.c-pos-box p { font-size: 13px; color: var(--txt2); line-height: 1.7; }
+
+/* Video */
+.c-video { margin-top: 24px; width: 420px; max-width: 100%; margin-left: auto; margin-right: auto; }
+.c-video iframe { width: 100%; aspect-ratio: 16/9; border-radius: var(--r); border: 0.5px solid var(--bdr); }
+.c-video-placeholder { background: var(--bg2); border: 0.5px dashed var(--bdr2); border-radius: var(--r); padding: 16px; text-align: center; }
+.c-video-placeholder p { font-size: 12px; color: var(--txt3); margin: 0 0 4px; }
+.c-video-placeholder small { font-size: 11px; color: var(--txt3); }
+
+/* YouTube thumbnail link */
+.c-video-thumb { display: block; position: relative; border-radius: var(--r); overflow: hidden; border: 0.5px solid var(--bdr); text-decoration: none; }
+.c-video-thumb img { width: 100%; display: block; }
+.c-video-thumb-play {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.65); color: #fff;
+  font-size: 12px; font-weight: 600; padding: 8px 12px;
+  text-align: center; letter-spacing: .02em;
+  transition: background .15s;
+}
+.c-video-thumb:hover .c-video-thumb-play { background: rgba(212,148,10,0.85); }
+
+/* States */
+.c-empty { padding: 80px 40px; text-align: center; color: var(--txt3); font-size: 14px; line-height: 1.7; }
+.c-wlc { padding: 60px 40px; text-align: center; }
+.c-wlc h3 { font-size: 18px; font-weight: 600; color: var(--txt); margin: 0 0 8px; }
+.c-wlc p { font-size: 14px; color: var(--txt2); line-height: 1.75; }
+
+/* ── Imágenes — proporción natural, ancho uniforme ── */
+.c-mech-img,
+.c-content-img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  max-height: 320px;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--r);
+  border: 0.5px solid var(--bdr);
+  margin: 12px auto 0;
+}
+
+/* ── Contenido — bloque centrado con ancho máximo ── */
+#content { flex: 1; overflow-y: auto; padding: 28px 24px; }
+#content > * { max-width: 820px; margin-left: auto; margin-right: auto; }
+
+/* Heroic toggle button */
+.hc-toggle-wrap { margin-bottom: 18px; }
+.hc-toggle-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 99px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  font-family: var(--font); border: 1.5px solid var(--bdr-hc);
+  background: transparent; color: var(--txt-hc);
+  transition: background .12s, color .12s;
+  letter-spacing: .02em;
+}
+.hc-toggle-btn:hover { background: var(--bg-hc); }
+.hc-toggle-btn.active { background: var(--bg-hc); }
+.hc-toggle-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--bdr-hc); flex-shrink: 0;
+  transition: background .12s;
+}
+.hc-toggle-btn.active .hc-toggle-dot { background: var(--gold); }
+
+/* Heroic tip card */
+.c-tip.hc-tip { background: var(--bg-hc); border-radius: var(--r); padding: 10px 12px; margin-top: 4px; border: 0.5px solid var(--bdr-hc); }
+.c-tip.hc-tip .c-dot { background: var(--bg-hc); border: 1.5px solid var(--bdr-hc); color: var(--txt-hc); }
+.c-tip.hc-tip .c-tip-txt { color: var(--txt2); }
+.hc-section-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--txt-hc); margin: 16px 0 8px; }
+
+/* ── Modelo del jefe ── */
+.c-boss-model-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 24px;
+}
+.c-boss-model {
+  max-height: 320px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: var(--r2);
+  border: 1px solid var(--bdr);
+  background: var(--bg2);
+}
+
+/* Duo de modelos (ej: Consortes Gemelas) */
+.c-boss-model-duo {
+  gap: 12px;
+}
+.c-boss-model-duo .c-boss-model {
+  max-height: 280px;
+  flex: 1;
+}
